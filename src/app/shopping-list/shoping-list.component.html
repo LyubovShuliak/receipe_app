@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-10">
+    <app-shopping-edit
+      (onNewItem)="addIngredient($event)"
+      (onRemoveItem)="removeIngredient($event)"
+    ></app-shopping-edit>
+  </div>
+  <hr />
+  <div class="col-xs-10">
+    <ul class="list-group">
+      <a
+        href="#"
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let ingredient of ingredients"
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
+    </ul>
+  </div>
+</div>
