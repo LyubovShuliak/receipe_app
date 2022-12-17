@@ -21,20 +21,40 @@
             formControlName="amount"
           />
           <span
-            *ngIf="!form.get('amount').valid && form.get('amount').touched"
-            class="help-block"
-          ></span>
+            *ngIf="
+              !form.get('amount').valid &&
+              form.get('amount').touched &&
+              form.value.amount
+            "
+            class="has-error"
+            >Please, enter a number</span
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" (click)="addItem()">
+          <button
+            type="submit"
+            class="btn btn-success"
+            (click)="addItem()"
+            [disabled]="!form.valid"
+          >
             Add
           </button>
-          <button type="submit" class="btn btn-danger" (click)="removeItem()">
+          <button
+            type="submit"
+            class="btn btn-danger"
+            (click)="removeItem()"
+            [disabled]="!form.valid"
+          >
             Delete
           </button>
-          <button type="submit" class="btn btn-primary" (click)="clearForm()">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="clearForm()"
+            [disabled]="!form.touched"
+          >
             Clear
           </button>
         </div>

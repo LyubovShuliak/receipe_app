@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "addad-86a90": {
+      "hosting": {
+        "receipe_app": [
+          "shoppinglistsh"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "addad-86a90"
+  }
+}

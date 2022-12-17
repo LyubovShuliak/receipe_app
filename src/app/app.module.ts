@@ -15,6 +15,12 @@ import { DropdownDirective } from 'src/shared/dropdown.directive';
 import { RouterModuleModule } from './router-module/router-module.module';
 import { RecipeService } from './recipes-book/recipe.service';
 import { RecipesStartComponent } from './recipes-book/recipes-list/recipes-start/recipes-start.component';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeEditComponent } from './recipes-book/recipes-list/recipe-edit/recipe-edit.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +33,7 @@ import { RecipesStartComponent } from './recipes-book/recipes-list/recipes-start
     RecipeItemComponent,
     DropdownDirective,
     RecipesStartComponent,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +41,11 @@ import { RecipesStartComponent } from './recipes-book/recipes-list/recipes-start
     FormsModule,
     ReactiveFormsModule,
     RouterModuleModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
-  providers: [RecipeService],
+  providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
